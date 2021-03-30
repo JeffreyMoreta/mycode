@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# importing ipaddress inorder to properly valid ip address
+# importing ipaddress inorder to properly validiate the ip address
 import ipaddress
 
 ipchk = input("Apply an IP address: ") # this line now prompts the user for input
