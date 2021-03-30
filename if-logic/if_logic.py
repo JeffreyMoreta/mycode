@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Author: Jeffrey Moreta """
 # importing the questions from the quiz
 from quiz import sorting_hat as quiz
 
