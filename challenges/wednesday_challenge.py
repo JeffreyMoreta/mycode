@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-char_name = input("Which character do you want to know about? (Wolverine, Harry Potter, Agent Fitz)").lower()
-char_stat = input("What statistic do you want to know about? (real name, powers, archenemy)").lower()
+questions = {
+        "character": "Which character do you want to know about? (Wolverine, Harry Potter, Agent Fitz)",
+        "stat": "Which statistic do you want to know about? (real name, powers, archenemy)"
+        }
+
+char_name = input(questions["character"]).lower()
+char_stat = input(questions["stat"]).lower()
 
 heroes=  {
 "wolverine":
@@ -16,4 +21,4 @@ heroes=  {
     "powers": "intelligence",
     "archenemy": "Hydra",}
         }
-print(f"{char_name.capitalize()}'s {char_stat} is: {heroes[char_name][char_stat]}")
+print(f"{char_name.title()}'s {char_stat} is: {heroes[char_name][char_stat]}")
