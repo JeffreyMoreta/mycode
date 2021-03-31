@@ -8,12 +8,7 @@ farms = [{"name": "NE Farm", "agriculture": ["sheep", "cows", "pigs", "chickens"
 def farm_type(farm_name, result_type=None):
     for farm in farms:
         if farm.get('name') == farm_name:
-            if result_type == "animals":
-                result = return_animals(farm)
-            else:
-                result = farm.get('agriculture')
-
-            return result
+            return return_animals(farm) if result_type == 'animals' else farm.get('agriculture')
 
 
 def return_animals(farm):
