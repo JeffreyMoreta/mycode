@@ -1,18 +1,8 @@
 #!/usr/bin/env python3
 """ Author: Jeffrey Moreta """
+
 # importing the questions from the quiz
 from quiz import sorting_hat as quiz
-
-
-# specifies if the input is allowed
-def is_valid(user_response):
-    valid_answers = ["A", "B", "C", "D"]
-    return user_response.upper().strip() in valid_answers
-
-
-# asks the user for their answer
-def user_input():
-    return input("What's your choice? (A, B, C, D)\t")
 
 
 # display the question to the user
@@ -26,6 +16,17 @@ def display_answers(quizlet_question):
         if potential_answer.startswith("answer"):
             print(quiz.get(quizlet_question).get(potential_answer))
     print("\n")
+
+
+# asks the user for their answer
+def user_input():
+    return input("What's your choice? (A, B, C, D)\t")
+
+
+# specifies if the input is allowed
+def is_valid(user_response):
+    valid_answers = ["A", "B", "C", "D"]
+    return user_response.upper().strip() in valid_answers
 
 
 # ask user for their answer
