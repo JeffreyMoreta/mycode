@@ -5,17 +5,16 @@
 from quiz import sorting_hat as quiz
 
 
-# display the question to the user
-def display_question(quizlet_question):
-    print(quiz.get(quizlet_question).get("question"))
+# display the question and all it's answers
+def display_quizlet(quizlet):
+    # enumerate allows me to use an index, while using a for-loop, and start from where I want
+    for index, entry in enumerate(quiz.get(quizlet).keys(), start=1):
+        print(quiz.get(quizlet).get(entry))
 
-
-# display all the possible answers for the questions
-def display_answers(quizlet_question):
-    for potential_answer in quiz.get(quizlet_question).keys():
-        if potential_answer.startswith("answer"):
-            print(quiz.get(quizlet_question).get(potential_answer))
-    print("\n")
+        # if this is the last potential answer then add an empty line at the end
+        if index == len(quiz.get(quizlet)):
+            # by default will give a new line - print(end="\n")
+            print()
 
 
 # asks the user for their answer
@@ -26,6 +25,7 @@ def user_input():
 # specifies if the input is allowed
 def is_valid(user_response):
     valid_answers = ["A", "B", "C", "D"]
+    # returns boolean - if it's in valid_answers or not
     return user_response.upper().strip() in valid_answers
 
 
@@ -33,7 +33,7 @@ def is_valid(user_response):
 def ask_response():
     answer = user_input()
 
-    # make sure the user's answer is allowed
+    # make sure the user's answer is valid
     while not is_valid(answer):
         print("\nAnswer wasn't valid. Please try again")
         answer = user_input()
@@ -68,8 +68,7 @@ def main():
     # loop through all the questions in the quiz
     for quizlet in quiz.keys():
 
-        display_question(quizlet)               # displays the question
-        display_answers(quizlet)                # displays all the potential answers
+        display_quizlet(quizlet)                # displays all the potential answers
         answer = ask_response()                 # ask user for response
         answers.append(ord(answer.upper()))     # ord converts an ASCII value into an int
 
