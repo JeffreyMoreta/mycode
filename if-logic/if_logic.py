@@ -3,43 +3,58 @@
 from quiz import sorting_hat as quiz
 
 
-# for visual space
-def spacer():
-    print("\n")
-
-
 # specifies if the input is allowed
-def is_valid(response):
+def is_valid(user_response):
     valid_answers = ["A", "B", "C", "D"]
-    return response.upper().strip() in valid_answers
+    return user_response.upper().strip() in valid_answers
+
+
+# asks the user for their answer
+def user_input():
+    return input("What's your choice? (A, B, C, D)\t")
 
 
 # display the question to the user
-def display_question(response):
-    print(quiz.get(response).get("question"))
+def display_question(quizlet_question):
+    print(quiz.get(quizlet_question).get("question"))
 
 
-# display all the answers for the questions
-def display_answers(response):
-    for show_answer in quiz.get(response).keys():
-        if show_answer.startswith("answer"):
-            print(quiz.get(response).get(show_answer))
+# display all the possible answers for the questions
+def display_answers(quizlet_question):
+    for potential_answer in quiz.get(quizlet_question).keys():
+        if potential_answer.startswith("answer"):
+            print(quiz.get(quizlet_question).get(potential_answer))
+    print("\n")
 
 
-def display_result(response):
-    # max possible result = 679
-    if response >= 670:
+# ask user for their answer
+def ask_response():
+    answer = user_input()
+
+    # make sure the user's answer is allowed
+    while not is_valid(answer):
+        print("\nAnswer wasn't valid. Please try again")
+        answer = user_input()
+
+    return answer
+
+
+# averages the user's score and assigns house based on most frequent answer picked
+def display_result(score, max_questions):
+    average = score / max_questions
+    # max possible result = 67.9
+    if average >= 67.0:
         print("Slytherin")
 
-    elif response >= 665:
-        print("Huggle Puff")
+    elif average >= 66.5:
+        print("Hufflepuff")
 
-    elif response >= 660:
+    elif average >= 66.0:
         print("Raven Claw")
 
-    elif response >= 655:
-        print("Griffondor")
-    # min possible result = 650
+    elif average >= 65.5:
+        print("Gryffindor")
+    # min possible result = 65.0
     else:
         print("Muggle")
 
@@ -51,25 +66,13 @@ def main():
     # loop through all the questions in the quiz
     for quizlet in quiz.keys():
 
-        display_question(quizlet)           # displays the question
-        display_answers(quizlet)            # displays all the potential answers
-        spacer()
-
-        # ask user for their answer
-        answer = input("What's your choice? (A, B, C, D)\t")
-
-        # make sure the user's answer is allowed
-        while not is_valid(answer):
-            print("\nAnswer wasn't valid. Please try again")
-            answer = input("What's your new choice? (A, B, C, D)\t")
-
-        # push the number value of the answer in to a list
-        # this will help us create an end result
-        # ord converts an ASCII value into an int
-        answers.append(ord(answer.upper()))
+        display_question(quizlet)               # displays the question
+        display_answers(quizlet)                # displays all the potential answers
+        answer = ask_response()                 # ask user for response
+        answers.append(ord(answer.upper()))     # ord converts an ASCII value into an int
 
     # display survey results
-    display_result(sum(answers))
+    display_result(sum(answers), len(quiz))
 
 
 if __name__ == "__main__":
