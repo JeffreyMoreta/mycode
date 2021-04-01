@@ -51,7 +51,7 @@ def main():
     x, y, operator = ask_questions()                                # deconstruct list, returned from ask_questions()
     math = {'+': add, '-': subtract, '/': divide, '*': multiply}    # 'switch' that references and calls my functions
 
-    print(f'Result: {math.get(operator)(x, y)}\n')
+    print(response.get('result').format(x, operator, y, math.get(operator)(x, y)))
 
 
 if __name__ == '__main__':

@@ -24,5 +24,6 @@ response = {
                 'zero': 'Nice try. Only premium subscribers can divide by zero.'
             }
         }
-    }
+    },
+    'result': 'Result:\n\t{} {} {} = {}\n'
 }
