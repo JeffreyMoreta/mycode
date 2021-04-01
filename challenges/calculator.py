@@ -35,10 +35,6 @@ def multiply(x, y):
     return x.__mul__(y)
 
 
-def ask_input(user_prompt):
-    return input(user_prompt)
-
-
 def ask_questions():
     # declaring operators that are allowed
     valid_operator = ['+', '-', '*', '/']
@@ -47,7 +43,7 @@ def ask_questions():
     while True:
         # prompt user for a valid number
         try:
-            x = float(ask_input(question.get('x')))
+            x = float(input(question.get('x')))
             if type(x) is float:
                 break
         except ValueError:
@@ -56,7 +52,7 @@ def ask_questions():
     while True:
         # prompt user for a second valid number
         try:
-            y = float(ask_input(question.get('y')))
+            y = float(input(question.get('y')))
             if type(y) is float:
                 break
         except ValueError:
@@ -64,7 +60,7 @@ def ask_questions():
 
     while True:
         # prompt user for a valid operator
-        operator = ask_input(question.get('operator') + question.get('operator-symbols'))
+        operator = input(question.get('operator') + question.get('operator-symbols'))
         if operator in valid_operator:
             break
         else:
