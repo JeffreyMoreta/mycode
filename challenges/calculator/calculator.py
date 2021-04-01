@@ -2,7 +2,7 @@
 """ Author: Jeffrey Moreta """
 
 from responses import response
-from responses import valid_operator
+from responses import valid_operators
 
 
 def add(x, y):
@@ -13,6 +13,10 @@ def subtract(x, y):
     return x.__sub__(y)
 
 
+def multiply(x, y):
+    return x.__mul__(y)
+
+
 def divide(x, y):
     try:
         return x.__truediv__(y)
@@ -20,27 +24,21 @@ def divide(x, y):
         print(response.get('err').get('divide').get('zero'))
 
 
-def multiply(x, y):
-    return x.__mul__(y)
-
-
 def ask_num(value):
+    # prompt user for a valid number
     while True:
-        # prompt user for a valid number
         try:
-            num = float(input(response.get('question').get(value)).strip())
-            if type(num) is float:
-                return num
+            return float(input(response.get('question').get(value)).strip())
         except ValueError:
             print(response.get('err').get('num'))
 
 
 def ask_operator():
+    # prompt user for a valid operator
     while True:
-        # prompt user for a valid operator
         operator = input(response.get('question').get('operator') + response.get('symbols').get('operator')).strip()
 
-        if operator in valid_operator:
+        if operator in valid_operators:
             return operator
         else:
             print(response.get('err').get('operator'))

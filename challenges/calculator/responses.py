@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """ Author: Jeffrey Moreta """
 
+# declaring operators that are allowed
+valid_operators = ['+', '-', '*', '/']
+
 response = {
     'question': {
         'x': 'What is your first number?\t\t',
@@ -8,7 +11,8 @@ response = {
         'operator': 'What is your operator? '
     },
     'symbols': {
-        'operator': '+, -, *, /\t',
+        # converts all valid operators into a string
+        'operator': f'{", ".join(valid_operators)}\t',
     },
     'err': {
         'num': "That's definitely not a number. Only premium subscribers can use letters.",
@@ -18,6 +22,3 @@ response = {
         }
     }
 }
-
-# declaring operators that are allowed
-valid_operator = ['+', '-', '*', '/']
