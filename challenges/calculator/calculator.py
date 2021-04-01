@@ -48,14 +48,12 @@ def ask_questions():
 
 
 def main():
-    # deconstruct list, returned from ask_questions(), into manageable variables
-    x, y, operator = ask_questions()
-    # this is the 'switch' that references and calls my functions
-    math = {'+': add, '-': subtract, '/': divide, '*': multiply}
+    x, y, operator = ask_questions()                                # deconstruct list, returned from ask_questions()
+    math = {'+': add, '-': subtract, '/': divide, '*': multiply}    # 'switch' that references and calls my functions
 
     print(f'Result: {math.get(operator)(x, y)}\n')
 
 
 if __name__ == '__main__':
-    while __name__ == '__main__':                       # doesn't seem like something I should be doing
+    while __name__ == '__main__':                                   # doesn't seem like something I should be doing
         main()

@@ -2,7 +2,7 @@
 """ Author: Jeffrey Moreta """
 
 # declaring operators that are allowed
-valid_operators = ['+', '-', '*', '/']
+valid_operators = ('+', '-', '*', '/')
 
 response = {
     'question': {
