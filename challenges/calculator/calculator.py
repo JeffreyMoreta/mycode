@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """ Author: Jeffrey Moreta """
 
-from responses import response
-from responses import valid_operators
+from responses import response, valid_operators
 
 
 def add(x, y):
@@ -21,27 +20,27 @@ def divide(x, y):
     try:
         return x.__truediv__(y)
     except ZeroDivisionError:
-        print(response.get('err').get('divide').get('zero'))
+        print(response.get('err').get('operator').get('divide').get('zero'))
 
 
-def ask_num(value):
-    # prompt user for a valid number
+# prompt user for a valid number
+def ask_num(number):
     while True:
         try:
-            return float(input(response.get('question').get(value)).strip())
+            return float(input(response.get('question').get(number)).strip())
         except ValueError:
-            print(response.get('err').get('num'))
+            print(response.get('err').get('num').get('invalid'))
 
 
+# prompt user for a valid operator
 def ask_operator():
-    # prompt user for a valid operator
     while True:
         operator = input(response.get('question').get('operator') + response.get('symbols').get('operator')).strip()
 
         if operator in valid_operators:
             return operator
         else:
-            print(response.get('err').get('operator'))
+            print(response.get('err').get('operator').get('invalid'))
 
 
 def ask_questions():
@@ -49,14 +48,14 @@ def ask_questions():
 
 
 def main():
-    # deconstruct array, returned from ask_questions(), into manageable variables
+    # deconstruct list, returned from ask_questions(), into manageable variables
     x, y, operator = ask_questions()
-    # this is the 'switch' that holds and calls my functions
+    # this is the 'switch' that references and calls my functions
     math = {'+': add, '-': subtract, '/': divide, '*': multiply}
 
     print(f'Result: {math.get(operator)(x, y)}\n')
 
 
-if __name__ == "__main__":
-    while __name__ == "__main__":
+if __name__ == '__main__':
+    while __name__ == '__main__':                       # doesn't seem like something I should be doing
         main()

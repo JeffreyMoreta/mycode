@@ -11,14 +11,18 @@ response = {
         'operator': 'What is your operator? '
     },
     'symbols': {
-        # converts all valid operators into a string
+        # converts all valid_operators into a string
         'operator': f'{", ".join(valid_operators)}\t',
     },
     'err': {
-        'num': "That's definitely not a number. Only premium subscribers can use letters.",
-        'operator': 'Please input the symbol and not text',
-        'divide': {
-            'zero': 'Nice try. Only premium subscribers can divide by zero.'
+        'num': {
+            'invalid': "That's definitely not a number. Try again. Bozo."
+        },
+        'operator': {
+            'invalid': 'What? No. Please input a CORRECT operator.',
+            'divide': {
+                'zero': 'Nice try. Only premium subscribers can divide by zero.'
+            }
         }
     }
 }
