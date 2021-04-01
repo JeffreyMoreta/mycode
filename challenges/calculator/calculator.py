@@ -27,7 +27,8 @@ def divide(x, y):
 def ask_num(number):
     while True:
         try:
-            return float(input(response.get('question').get(number)).strip())
+            return float(input(response.get('question').get(number) +
+                               response.get('input').get('spacer').get('md')).strip())
         except ValueError:
             print(response.get('err').get('num').get('invalid'))
 
@@ -35,7 +36,9 @@ def ask_num(number):
 # prompt user for a valid operator
 def ask_operator():
     while True:
-        operator = input(response.get('question').get('operator') + response.get('symbols').get('operator')).strip()
+        operator = input(response.get('question').get('operator') +
+                         response.get('symbols').get('operator') +
+                         response.get('input').get('spacer').get('sm')).strip()
 
         if operator in valid_operators:
             return operator

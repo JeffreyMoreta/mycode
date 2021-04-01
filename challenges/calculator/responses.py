@@ -5,14 +5,20 @@
 valid_operators = ('+', '-', '*', '/')
 
 response = {
+    'input': {
+        'spacer': {
+            'sm': '\t',
+            'md': '\t\t',
+            'lg': '\t\t\t'
+        }
+    },
     'question': {
-        'x': 'What is your first number?\t\t',
-        'y': 'What is your second number?\t\t',
+        'x': 'What is your first number?',
+        'y': 'What is your second number?',
         'operator': 'What is your operator? '
     },
     'symbols': {
-        # converts all valid_operators into a string
-        'operator': f'{", ".join(valid_operators)}\t',
+        'operator': "{}".format(", ".join(valid_operators)),        # converts all valid_operators into a string
     },
     'err': {
         'num': {
