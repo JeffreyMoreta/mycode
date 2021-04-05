@@ -8,8 +8,8 @@ import requests
 AOIF_CHAR = "https://www.anapioficeandfire.com/api/characters/"
 
 
-def print_result(result):
-    print("", requests.get(result).json().get('name'))
+def print_result(title, result):
+    print("{}:\t".format(title), requests.get(result).json().get('name'))
 
 
 def combine_requests(info):
@@ -29,18 +29,15 @@ def main():
     got_dj = requests.get(AOIF_CHAR + got_charToLookup).json()
 
     # Get Name
-    print("Name:")
-    print_result(AOIF_CHAR + got_charToLookup)
+    print_result("Name", AOIF_CHAR + got_charToLookup)
 
     # Get Allegiance
-    print("House:")
     for allegiance in got_dj.get('allegiances'):
-        print_result(allegiance)
+        print_result("House", allegiance)
 
     # Get Books
-    print("Appearances:")
     for book in combine_requests([got_dj.get('books'), got_dj.get('povBooks')]):
-        print_result(book)
+        print_result("Book", book)
 
 
 if __name__ == "__main__":
