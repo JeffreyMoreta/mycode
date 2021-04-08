@@ -6,7 +6,7 @@ import argparse
 
 
 def main():
-    pokeapi = requests.get("https://pokeapi.co/api/v2/pokemon/{args.poke}").json()
+    pokeapi = requests.get(f"https://pokeapi.co/api/v2/pokemon/{args.poke}").json()
 
     # Print front_default
     print("front_default url:", pokeapi.get('sprites').get('front_default'))
@@ -22,6 +22,6 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--poke', help='Provide the name of a Pokemon (or its PokeDex number)').lower()
+    parser.add_argument('--poke', help='Provide the name of a Pokemon (or its PokeDex number)')
     args = parser.parse_args()
     main()
